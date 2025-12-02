@@ -1,3 +1,6 @@
+//GRUPO 6
+//INGENIERIA EN SISTEMAS INSTELIGENTES
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,29 +18,68 @@ class SoccerCategory {
   final double price; // Precio Mensual
   final String description;
 
-  SoccerCategory({required this.name, required this.ageRange, required this.price, required this.description});
+  SoccerCategory({
+    required this.name,
+    required this.ageRange,
+    required this.price,
+    required this.description,
+  });
 }
 
 // Lista de categorías de entrenamiento (Requerimiento de Clasificación por edades)
 final List<SoccerCategory> mockSoccerCategories = [
-  SoccerCategory(name: 'Mini Fútbol', ageRange: '5 - 7 años', price: 50.00, description: 'Introducción lúdica al fútbol, desarrollo de habilidades motoras y coordinación básica. Ideal para los más pequeños.'),
-  SoccerCategory(name: 'Infantil A', ageRange: '8 - 9 años', price: 60.00, description: 'Foco en fundamentos técnicos: pase, control orientado y regate. Se introducen posiciones básicas.'),
-  SoccerCategory(name: 'Infantil B', ageRange: '10 - 11 años', price: 70.00, description: 'Perfeccionamiento de la técnica individual, entrenamiento de velocidad y tácticas básicas de equipo (transiciones).'),
-  SoccerCategory(name: 'Juvenil A', ageRange: '12 - 13 años', price: 80.00, description: 'Énfasis en la comprensión táctica, posicionamiento en el campo, y desarrollo físico específico para la edad.'),
-  SoccerCategory(name: 'Juvenil B', ageRange: '14 - 15 años', price: 90.00, description: 'Preparación para el fútbol de alta competencia, estrategia avanzada, análisis de juego y acondicionamiento avanzado.'),
-  SoccerCategory(name: 'Superior', ageRange: '16 - 18 años', price: 100.00, description: 'Entrenamiento de élite, desarrollo de roles específicos, mentalidad competitiva y preparación para pruebas en clubes profesionales.'),
+  SoccerCategory(
+    name: 'Mini Fútbol',
+    ageRange: '5 - 7 años',
+    price: 50.00,
+    description:
+        'Introducción lúdica al fútbol, desarrollo de habilidades motoras y coordinación básica. Ideal para los más pequeños.',
+  ),
+  SoccerCategory(
+    name: 'Infantil A',
+    ageRange: '8 - 9 años',
+    price: 60.00,
+    description:
+        'Foco en fundamentos técnicos: pase, control orientado y regate. Se introducen posiciones básicas.',
+  ),
+  SoccerCategory(
+    name: 'Infantil B',
+    ageRange: '10 - 11 años',
+    price: 70.00,
+    description:
+        'Perfeccionamiento de la técnica individual, entrenamiento de velocidad y tácticas básicas de equipo (transiciones).',
+  ),
+  SoccerCategory(
+    name: 'Juvenil A',
+    ageRange: '12 - 13 años',
+    price: 80.00,
+    description:
+        'Énfasis en la comprensión táctica, posicionamiento en el campo, y desarrollo físico específico para la edad.',
+  ),
+  SoccerCategory(
+    name: 'Juvenil B',
+    ageRange: '14 - 15 años',
+    price: 90.00,
+    description:
+        'Preparación para el fútbol de alta competencia, estrategia avanzada, análisis de juego y acondicionamiento avanzado.',
+  ),
+  SoccerCategory(
+    name: 'Superior',
+    ageRange: '16 - 18 años',
+    price: 100.00,
+    description:
+        'Entrenamiento de élite, desarrollo de roles específicos, mentalidad competitiva y preparación para pruebas en clubes profesionales.',
+  ),
 ];
 
 // Categorías amplias para la TabBar
 final List<String> mainCategories = ['Inicial', 'Intermedio', 'Avanzado'];
-
 
 // Lista para simular usuarios registrados (Email y Contraseña).
 // Almacena un mapa de {email: password}.
 final Map<String, String> mockRegisteredUsers = {
   'test@example.com': 'password123', // Usuario de prueba inicial
 };
-
 
 // ---------------------------------------------------
 // 1. App Principal y Configuración de Rutas
@@ -51,10 +93,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Academia de Fútbol - Mi Club', // Título actualizado
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        useMaterial3: true,
-      ),
+      theme: ThemeData(primarySwatch: Colors.deepPurple, useMaterial3: true),
       initialRoute: '/login', // Inicia con la pantalla de Login
       routes: {
         '/login': (context) => const LoginScreen(),
@@ -63,7 +102,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 // ---------------------------------------------------
 // 2. Pantalla de Inicio de Sesión (Se mantiene)
@@ -87,13 +125,18 @@ class _LoginScreenState extends State<LoginScreen> {
       final password = _passwordController.text;
 
       // Simulación de lógica de inicio de sesión: verifica si las credenciales coinciden
-      if (mockRegisteredUsers.containsKey(email) && mockRegisteredUsers[email] == password) {
+      if (mockRegisteredUsers.containsKey(email) &&
+          mockRegisteredUsers[email] == password) {
         // Credenciales correctas
         Navigator.pushReplacementNamed(context, '/home');
       } else {
         // Credenciales incorrectas o usuario no existe
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Error de inicio de sesión: Correo o contraseña incorrectos.')),
+          const SnackBar(
+            content: Text(
+              'Error de inicio de sesión: Correo o contraseña incorrectos.',
+            ),
+          ),
         );
       }
     }
@@ -122,13 +165,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.deepPurple,
                 ),
                 const SizedBox(height: 40),
-                
+
                 // Campo de Email
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
                     labelText: 'Correo Electrónico',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
                     prefixIcon: Icon(Icons.email),
                   ),
                   keyboardType: TextInputType.emailAddress,
@@ -140,14 +185,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 const SizedBox(height: 20),
-                
+
                 // Campo de Contraseña
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Contraseña',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
                     prefixIcon: Icon(Icons.lock),
                   ),
                   validator: (value) {
@@ -166,21 +213,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     backgroundColor: Colors.deepPurple,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 15),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                   child: const Text('INGRESAR', style: TextStyle(fontSize: 18)),
                 ),
                 const SizedBox(height: 20),
-                
+
                 // Opción para Registrar Nuevo Cliente
                 TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const RegistrationScreen()),
+                      MaterialPageRoute(
+                        builder: (context) => const RegistrationScreen(),
+                      ),
                     );
                   },
-                  child: const Text('¿Aún no inscribes a tu hijo? Regístrate aquí.'), // Texto actualizado
+                  child: const Text(
+                    '¿Aún no inscribes a tu hijo? Regístrate aquí.',
+                  ), // Texto actualizado
                 ),
               ],
             ),
@@ -190,7 +243,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
 
 // ---------------------------------------------------
 // 3. Formulario de Registro de Clientes (Se mantiene)
@@ -228,7 +280,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           context: context,
           builder: (context) => AlertDialog(
             title: const Text('Error de Registro'),
-            content: const Text('El correo electrónico ya se encuentra registrado.'),
+            content: const Text(
+              'El correo electrónico ya se encuentra registrado.',
+            ),
             actions: <Widget>[
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
@@ -239,17 +293,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         );
         return;
       }
-      
+
       // 2. Simulación de guardar los datos del nuevo cliente
       // Guardar credenciales para la simulación de login
       mockRegisteredUsers[email] = password;
-      
+
       // 3. Mostrar confirmación de registro
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: const Text('Inscripción Exitosa'), // Título actualizado
-          content: Text('El representante ${_nombreController.text} ha sido registrado. Ahora puede seleccionar la categoría para su niño.'), // Mensaje actualizado
+          content: Text(
+            'El representante ${_nombreController.text} ha sido registrado. Ahora puede seleccionar la categoría para su niño.',
+          ), // Mensaje actualizado
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -286,15 +342,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               const SizedBox(height: 20),
 
               // Campo: Cédula
-              _buildTextField(_cedulaController, 'Cédula / Identificación', Icons.badge, TextInputType.number),
+              _buildTextField(
+                _cedulaController,
+                'Cédula / Identificación',
+                Icons.badge,
+                TextInputType.number,
+              ),
               const SizedBox(height: 15),
 
               // Campo: Nombre completo
-              _buildTextField(_nombreController, 'Nombre Completo del Representante', Icons.person, TextInputType.text), // Etiqueta actualizada
+              _buildTextField(
+                _nombreController,
+                'Nombre Completo del Representante',
+                Icons.person,
+                TextInputType.text,
+              ), // Etiqueta actualizada
               const SizedBox(height: 15),
-              
+
               // Campo: Correo Electrónico
-              _buildTextField(_emailController, 'Correo Electrónico', Icons.email, TextInputType.emailAddress),
+              _buildTextField(
+                _emailController,
+                'Correo Electrónico',
+                Icons.email,
+                TextInputType.emailAddress,
+              ),
               const SizedBox(height: 15),
 
               // Campo: Contraseña
@@ -303,7 +374,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 obscureText: true,
                 decoration: const InputDecoration(
                   labelText: 'Contraseña',
-                  border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
                   prefixIcon: Icon(Icons.lock),
                 ),
                 validator: (value) {
@@ -316,15 +389,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               const SizedBox(height: 15),
 
               // Campo: Dirección
-              _buildTextField(_direccionController, 'Dirección de Residencia', Icons.location_on, TextInputType.streetAddress), // Etiqueta actualizada
+              _buildTextField(
+                _direccionController,
+                'Dirección de Residencia',
+                Icons.location_on,
+                TextInputType.streetAddress,
+              ), // Etiqueta actualizada
               const SizedBox(height: 15),
 
               // Campo: Teléfono
-              _buildTextField(_telefonoController, 'Teléfono de Contacto', Icons.phone, TextInputType.phone), // Etiqueta actualizada
+              _buildTextField(
+                _telefonoController,
+                'Teléfono de Contacto',
+                Icons.phone,
+                TextInputType.phone,
+              ), // Etiqueta actualizada
               const SizedBox(height: 15),
 
               // Campo: Ciudad
-              _buildTextField(_ciudadController, 'Ciudad', Icons.location_city, TextInputType.text),
+              _buildTextField(
+                _ciudadController,
+                'Ciudad',
+                Icons.location_city,
+                TextInputType.text,
+              ),
               const SizedBox(height: 30),
 
               // Botón de Registro
@@ -334,9 +422,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   backgroundColor: Colors.deepPurple,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 15),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
-                child: const Text('FINALIZAR INSCRIPCIÓN', style: TextStyle(fontSize: 18)), // Texto actualizado
+                child: const Text(
+                  'FINALIZAR INSCRIPCIÓN',
+                  style: TextStyle(fontSize: 18),
+                ), // Texto actualizado
               ),
             ],
           ),
@@ -344,18 +437,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       ),
     );
   }
-  
+
   // Widget auxiliar para crear campos de texto con validación
   Widget _buildTextField(
-      TextEditingController controller,
-      String label,
-      IconData icon,
-      TextInputType keyboardType) {
+    TextEditingController controller,
+    String label,
+    IconData icon,
+    TextInputType keyboardType,
+  ) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
-        border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
         prefixIcon: Icon(icon),
       ),
       keyboardType: keyboardType,
@@ -368,7 +464,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 }
-
 
 // ---------------------------------------------------
 // 4. Pantalla Principal con Navegación (HomePage) - Títulos actualizados
@@ -401,15 +496,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       // La AppBar es dinámica según la pantalla seleccionada
       appBar: AppBar(
-        title: Text(_selectedIndex == 0 ? 'Clasificación y Servicios' : // Título actualizado
-                     _selectedIndex == 1 ? 'Programas por Categoría' : 'Mi Perfil de Representante'), // Títulos actualizados
+        title: Text(
+          _selectedIndex == 0
+              ? 'Clasificación y Servicios'
+              : // Título actualizado
+                _selectedIndex == 1
+              ? 'Programas por Categoría'
+              : 'Mi Perfil de Representante',
+        ), // Títulos actualizados
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
         elevation: 4,
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
       // Navegación inferior
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -421,10 +520,7 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.category), // Ícono actualizado
             label: 'Categorías',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Perfil',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.deepPurple,
@@ -433,7 +529,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
 
 // ---------------------------------------------------
 // 5. Pantalla de Lista de Servicios (ListView) - Implementa "Ver detalles" y "Reservar cupo"
@@ -454,7 +549,9 @@ class ServiceListScreen extends StatelessWidget {
           return Card(
             margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             elevation: 3,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -465,7 +562,11 @@ class ServiceListScreen extends StatelessWidget {
                     children: [
                       Text(
                         service.name,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.deepPurple),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.deepPurple,
+                        ),
                       ),
                       Text(
                         '\$${service.price.toStringAsFixed(2)}/Mes',
@@ -478,7 +579,10 @@ class ServiceListScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 4),
-                  Text('Rango de Edad: ${service.ageRange}', style: const TextStyle(color: Colors.black54)),
+                  Text(
+                    'Rango de Edad: ${service.ageRange}',
+                    style: const TextStyle(color: Colors.black54),
+                  ),
                   const Divider(height: 20),
                   Text(
                     'Descripción del Programa: ${service.description}',
@@ -498,7 +602,9 @@ class ServiceListScreen extends StatelessWidget {
                             context: context,
                             builder: (context) => AlertDialog(
                               title: Text(service.name),
-                              content: Text('Detalles del programa:\n\nEdad: ${service.ageRange}\nCosto: \$${service.price.toStringAsFixed(2)}/mes\n\n${service.description}'),
+                              content: Text(
+                                'Detalles del programa:\n\nEdad: ${service.ageRange}\nCosto: \$${service.price.toStringAsFixed(2)}/mes\n\n${service.description}',
+                              ),
                               actions: <Widget>[
                                 TextButton(
                                   onPressed: () => Navigator.of(context).pop(),
@@ -515,10 +621,17 @@ class ServiceListScreen extends StatelessWidget {
                       ElevatedButton.icon(
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Proceso de Reserva iniciado para la categoría ${service.name}.')),
+                            SnackBar(
+                              content: Text(
+                                'Proceso de Reserva iniciado para la categoría ${service.name}.',
+                              ),
+                            ),
                           );
                         },
-                        icon: const Icon(Icons.bookmark_add, size: 18), // Ícono de reservar
+                        icon: const Icon(
+                          Icons.bookmark_add,
+                          size: 18,
+                        ), // Ícono de reservar
                         label: const Text('Reservar cupo'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.deepPurple,
@@ -537,7 +650,6 @@ class ServiceListScreen extends StatelessWidget {
   }
 }
 
-
 // ---------------------------------------------------
 // 6. Pantalla de Categorías con TabBar (Agrupada por Nivel)
 // ---------------------------------------------------
@@ -548,11 +660,22 @@ class CategoryTabScreen extends StatelessWidget {
   // Función auxiliar para filtrar servicios por nivel amplio
   List<SoccerCategory> _filterServices(String category) {
     if (category == 'Inicial') {
-      return mockSoccerCategories.where((c) => c.name == 'Mini Fútbol').toList();
+      return mockSoccerCategories
+          .where((c) => c.name == 'Mini Fútbol')
+          .toList();
     } else if (category == 'Intermedio') {
-      return mockSoccerCategories.where((c) => c.name == 'Infantil A' || c.name == 'Infantil B').toList();
+      return mockSoccerCategories
+          .where((c) => c.name == 'Infantil A' || c.name == 'Infantil B')
+          .toList();
     } else if (category == 'Avanzado') {
-      return mockSoccerCategories.where((c) => c.name == 'Juvenil A' || c.name == 'Juvenil B' || c.name == 'Superior').toList();
+      return mockSoccerCategories
+          .where(
+            (c) =>
+                c.name == 'Juvenil A' ||
+                c.name == 'Juvenil B' ||
+                c.name == 'Superior',
+          )
+          .toList();
     }
     return [];
   }
@@ -572,10 +695,12 @@ class CategoryTabScreen extends StatelessWidget {
               indicatorColor: Colors.deepPurple,
               labelColor: Colors.deepPurple,
               unselectedLabelColor: Colors.grey,
-              tabs: mainCategories.map((category) => Tab(text: category)).toList(),
+              tabs: mainCategories
+                  .map((category) => Tab(text: category))
+                  .toList(),
             ),
           ),
-          
+
           // TabBarView muestra las categorías de edad dentro de ese nivel
           Expanded(
             child: TabBarView(
@@ -583,7 +708,11 @@ class CategoryTabScreen extends StatelessWidget {
                 final filteredServices = _filterServices(category);
 
                 if (filteredServices.isEmpty) {
-                  return Center(child: Text('No hay programas en la categoría "$category".'));
+                  return Center(
+                    child: Text(
+                      'No hay programas en la categoría "$category".',
+                    ),
+                  );
                 }
 
                 return ListView.builder(
@@ -591,14 +720,26 @@ class CategoryTabScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final service = filteredServices[index];
                     return ListTile(
-                      leading: const Icon(Icons.sports_football, color: Colors.deepPurple),
-                      title: Text(service.name, style: const TextStyle(fontWeight: FontWeight.bold)),
-                      subtitle: Text('Edad: ${service.ageRange} | Precio: \$${service.price.toStringAsFixed(2)}/mes'),
+                      leading: const Icon(
+                        Icons.sports_football,
+                        color: Colors.deepPurple,
+                      ),
+                      title: Text(
+                        service.name,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        'Edad: ${service.ageRange} | Precio: \$${service.price.toStringAsFixed(2)}/mes',
+                      ),
                       onTap: () {
-                         ScaffoldMessenger.of(context).showSnackBar(
-                           SnackBar(content: Text('Ver más información de ${service.name}.')),
-                         );
-                      }
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Ver más información de ${service.name}.',
+                            ),
+                          ),
+                        );
+                      },
                     );
                   },
                 );
@@ -624,7 +765,11 @@ class ProfileScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const Icon(Icons.account_circle, size: 100, color: Colors.deepPurpleAccent),
+          const Icon(
+            Icons.account_circle,
+            size: 100,
+            color: Colors.deepPurpleAccent,
+          ),
           const SizedBox(height: 20),
           const Text(
             'Bienvenido Representante',
@@ -633,10 +778,10 @@ class ProfileScreen extends StatelessWidget {
           const SizedBox(height: 10),
           // CORRECCIÓN: textAlign se mueve del TextStyle al widget Text.
           const Text(
-            'Aquí puede gestionar los datos de su niño y sus inscripciones a la Academia.', 
+            'Aquí puede gestionar los datos de su niño y sus inscripciones a la Academia.',
             textAlign: TextAlign.center, // <-- FIX APLICADO
-            style: TextStyle(color: Colors.black54)
-          ), 
+            style: TextStyle(color: Colors.black54),
+          ),
           const SizedBox(height: 30),
           ElevatedButton.icon(
             onPressed: () {
@@ -650,7 +795,7 @@ class ProfileScreen extends StatelessWidget {
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             ),
-          )
+          ),
         ],
       ),
     );
